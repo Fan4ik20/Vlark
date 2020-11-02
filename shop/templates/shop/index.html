@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'shop/assets/styles/MainStyle.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<title>Main page</title>
+</head>
+<body>
+	<div class="all">
+	<header class="header">
+		<div class="container">
+			<div class="inner">
+				<div class="logo"><a href="index.html">Vlark</a></div>
+				<nav  class="nav">
+					<a class="nav_link" href="#"><p>Register</p></a>
+					<a class="nav_link" href="#"><p>Sign In</p></a>
+					<a class="nav_link empty" href="#">
+						<img class="car" src="{% static 'shop/assets/images/Car.png' %}" alt="S">
+						<p>empty</p>
+						<span class="arrow-bot"></span>
+					</a>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<div class="menu">
+		<div class="container">
+			<div class="inner">
+				<div class="logo"></div>
+				<nav  class="nav_menu">
+
+					<div class="menu_list">
+						<a class="nav_link" href="#"><p>Menu</p>
+							<span class="arrow-bot"></span>
+						</a>
+						<div class="for_hov">
+							<ul class="sub_menu_list">
+								<li><a href="#" class="plitka pl_big"></a></li>
+								<li><a href="#" class="plitka pl_dwa"></a></li>
+								<li><a href="#" class="plitka"></a></li> 
+								<li><a href="#" class="plitka pl_big"></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="menu_list">
+						<a class="nav_link" href="#"><p>Films</p>
+						<span class="arrow-bot"></span></a>
+						<div class="for_hov">
+							<ul class="sub_menu_list">
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="menu_list">
+						<a class="nav_link" href="#"><p>Teatr</p>
+						<span class="arrow-bot"></span></a>
+						<div class="for_hov">
+							<ul class="sub_menu_list">
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="menu_list">
+						<a class="nav_link" href="#"><p>Balet</p>
+						<span class="arrow-bot"></span></a>
+						<div class="for_hov fourth">
+							<ul class="sub_menu_list">
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+								<li><a href="#">Fierst</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="menu_list">
+						<a class="nav_link" href="#"><p>IamGay</p></a>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="intro">
+		<div class="back">
+			<div class="container">	
+				<div class="intro_inner">
+					<a class="btn" href="http://ignacyjanpaderewski.com/"><p>Odwiedź festiwal</p></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main_part">
+		<div class="container con_1400">
+			<nav  class="nav_menu nav_gallery">
+				<a class="nav_link" href="#"><p>popular</p></a>
+				<a class="nav_link" href="#"><p>new arrivals </p></a>
+				<a class="nav_link" href="#"><p>best sellers</p></a>
+				<a class="nav_link" href="#"><p>special offers</p></a>
+				<a class="nav_link" href="#"><p>coming soon</p></a>
+			</nav>
+            {% for event in events.all %}
+			<div class="gallery">
+				<div class="L">
+					<a class="gimg spaceR spaceD" href="#" >
+						<div class="event_info">	
+							<div class="event_name">	
+								<p class="name">{{ event.event_name }}</p>
+							</div>		
+							<div class="event_main">
+								<div class="date">
+									<span class="date_icon icons"></span>
+									<p>{{ event.event_date.date }}</p>
+								</div>
+								<div class="location">
+									<span class="place_icon icons"></span>
+									<p>{{ event.event_address }}</p>
+								</div>
+								<div class="price">
+									<span class="price_icon icons"></span>
+									<p>{{ event.event_cost }}</p>
+								</div>	
+							</div>
+						</div>	
+						<img class="foto_width_332" src="{{ event.event_img.url }}" alt="BB">
+					</a>
+                </div>
+            </div>
+                {% endfor %}
+
+{#					<a class="gimg" href="#">#}
+{#						<div class="event_info">	#}
+{#							<div class="event_name">	#}
+{#								<p class="name">Name</p>#}
+{#							</div>		#}
+{#							<div class="event_main">#}
+{#								<div class="date">#}
+{#									<span class="date_icon icons"></span>#}
+{#									<p>25.06.2021</p>#}
+{#								</div>#}
+{#								<div class="location">#}
+{#									<span class="place_icon icons"></span>#}
+{#									<p>Plac Litewski</p>#}
+{#								</div>#}
+{#								<div class="price">#}
+{#									<span class="price_icon icons"></span>#}
+{#									<p>od 100 PLN</p>#}
+{#								</div>	#}
+{#							</div>#}
+{#						</div>	#}
+{#						<img  class="foto_width_332" src="assets/images/te2.jpg" alt="BB">#}
+{#					</a>#}
+{##}
+{#					<a class="gimg" href="#">#}
+{#						<div class="event_info">	#}
+{#							<div class="event_name">	#}
+{#								<p class="name">Name</p>#}
+{#							</div>		#}
+{#							<div class="event_main">#}
+{#								<div class="date">#}
+{#									<span class="date_icon icons"></span>#}
+{#									<p>25.06.2021</p>#}
+{#								</div>#}
+{#								<div class="location">#}
+{#									<span class="place_icon icons"></span>#}
+{#									<p>Plac Litewski</p>#}
+{#								</div>#}
+{#								<div class="price">#}
+{#									<span class="price_icon icons"></span>#}
+{#									<p>od 100 PLN</p>#}
+{#								</div>	#}
+{#							</div>#}
+{#						</div>	#}
+{#						<img class="foto_width_688" src="assets/images/te3.jpg" alt="BB">#}
+{#					</a>#}
+{##}
+{#					<div class="Lsmal">#}
+{#						<a class="gimg spaceU" href="#">#}
+{#							<div class="event_info">	#}
+{#								<div class="event_name">	#}
+{#									<p class="name">Name</p>#}
+{#								</div>		#}
+{#								<div class="event_main">#}
+{#									<div class="date">#}
+{#										<span class="date_icon icons"></span>#}
+{#										<p>25.06.2021</p>#}
+{#									</div>#}
+{#									<div class="location">#}
+{#										<span class="place_icon icons"></span>#}
+{#										<p>Plac Litewski</p>#}
+{#									</div>#}
+{#									<div class="price">#}
+{#										<span class="price_icon icons"></span>#}
+{#										<p>od 100 PLN</p>#}
+{#									</div>	#}
+{#								</div>#}
+{#							</div>	#}
+{#							<img class="foto_width_332" src="assets/images/te4.jpg" alt="BB">#}
+{#						</a>#}
+{##}
+{#						<a class="gimg spaceU" href="#">#}
+{#							<div class="event_info">	#}
+{#								<div class="event_name">	#}
+{#									<p class="name">Name</p>#}
+{#								</div>		#}
+{#								<div class="event_main">#}
+{#									<div class="date">#}
+{#										<span class="date_icon icons"></span>#}
+{#										<p>25.06.2021</p>#}
+{#									</div>#}
+{#									<div class="location">#}
+{#										<span class="place_icon icons"></span>#}
+{#										<p>Plac Litewski</p>#}
+{#									</div>#}
+{#									<div class="price">#}
+{#										<span class="price_icon icons"></span>#}
+{#										<p>od 100 PLN</p>#}
+{#									</div>	#}
+{#								</div>#}
+{#							</div>	#}
+{#							<img class="foto_width_332" src="assets/images/te6.jpg" alt="BB">#}
+{#						</a>#}
+{#					</div>#}
+{##}
+{#					<div class="Lsmal">#}
+{#						<a class="gimg spaceU spaceL_half" href="#">#}
+{#							<div class="event_info">	#}
+{#								<div class="event_name">	#}
+{#									<p class="name">Name</p>#}
+{#								</div>		#}
+{#								<div class="event_main">#}
+{#									<div class="date">#}
+{#										<span class="date_icon icons"></span>#}
+{#										<p>25.06.2021</p>#}
+{#									</div>#}
+{#									<div class="location">#}
+{#										<span class="place_icon icons"></span>#}
+{#										<p>Plac Litewski</p>#}
+{#									</div>#}
+{#									<div class="price">#}
+{#										<span class="price_icon icons"></span>#}
+{#										<p>od 100 PLN</p>#}
+{#									</div>	#}
+{#								</div>#}
+{#							</div>	#}
+{#							<img class="foto_width_332 foto_height_397" src="assets/images/te5.jpg" alt="BB">#}
+{#						</a>#}
+{#					</div>#}
+{#				</div>#}
+{##}
+{#				<div class="L R">#}
+{#					<a class="gimg" href="#">#}
+{#						<div class="event_info">	#}
+{#							<div class="event_name">	#}
+{#								<p class="name">Name</p>#}
+{#							</div>		#}
+{#							<div class="event_main">#}
+{#								<div class="date">#}
+{#									<span class="date_icon icons"></span>#}
+{#									<p>25.06.2021</p>#}
+{#								</div>#}
+{#								<div class="location">#}
+{#									<span class="place_icon icons"></span>#}
+{#									<p>Plac Litewski</p>#}
+{#								</div>#}
+{#								<div class="price">#}
+{#									<span class="price_icon icons"></span>#}
+{#									<p>od 100 PLN</p>#}
+{#								</div>	#}
+{#							</div>#}
+{#						</div>	#}
+{#						<img class="foto_width_688"src="assets/images/te3.jpg" alt="BB">	#}
+{#					</a>#}
+{#					<a class="gimg spaceR spaceU" href="#">#}
+{#						<div class="event_info">	#}
+{#							<div class="event_name">	#}
+{#								<p class="name">Name</p>#}
+{#							</div>		#}
+{#							<div class="event_main">#}
+{#								<div class="date">#}
+{#									<span class="date_icon icons"></span>#}
+{#									<p>25.06.2021</p>#}
+{#								</div>#}
+{#								<div class="location">#}
+{#									<span class="place_icon icons"></span>#}
+{#									<p>Plac Litewski</p>#}
+{#								</div>#}
+{#								<div class="price">#}
+{#									<span class="price_icon icons"></span>#}
+{#									<p>od 100 PLN</p>#}
+{#								</div>	#}
+{#							</div>#}
+{#						</div>	#}
+{#						<img class="foto_width_332"src="assets/images/te7.jpg" alt="BB">#}
+{#					</a>#}
+{#					<a class="gimg spaceU" href="#">#}
+{#						<div class="event_info">	#}
+{#							<div class="event_name">	#}
+{#								<p class="name">Name</p>#}
+{#							</div>		#}
+{#							<div class="event_main">#}
+{#								<div class="date">#}
+{#									<span class="date_icon icons"></span>#}
+{#									<p>25.06.2021</p>#}
+{#								</div>#}
+{#								<div class="location">#}
+{#									<span class="place_icon icons"></span>#}
+{#									<p>Plac Litewski</p>#}
+{#								</div>#}
+{#								<div class="price">#}
+{#									<span class="price_icon icons"></span>#}
+{#									<p>od 100 PLN</p>#}
+{#								</div>	#}
+{#							</div>#}
+{#						</div>	#}
+{#						<img class="foto_width_332" src="assets/images/te8.jpg" alt="BB">#}
+{#					</a>#}
+{##}
+{#					<div class="Lsmal">#}
+{#						<a class="gimg spaceU" href="#">#}
+{#							<div class="event_info">	#}
+{#								<div class="event_name">	#}
+{#									<p class="name">Name</p>#}
+{#								</div>		#}
+{#								<div class="event_main">#}
+{#									<div class="date">#}
+{#										<span class="date_icon icons"></span>#}
+{#										<p>25.06.2021</p>#}
+{#									</div>#}
+{#									<div class="location">#}
+{#										<span class="place_icon icons"></span>#}
+{#										<p>Plac Litewski</p>#}
+{#									</div>#}
+{#									<div class="price">#}
+{#										<span class="price_icon icons"></span>#}
+{#										<p>od 100 PLN</p>#}
+{#									</div>	#}
+{#								</div>#}
+{#							</div>	#}
+{#							<img class="foto_width_332" src="assets/images/te11.jpg" alt="BB">#}
+{#						</a>#}
+{##}
+{#						<a class="gimg spaceU" href="#">#}
+{#							<div class="event_info">	#}
+{#								<div class="event_name">	#}
+{#									<p class="name">Name</p>#}
+{#								</div>		#}
+{#								<div class="event_main">#}
+{#									<div class="date">#}
+{#										<span class="date_icon icons"></span>#}
+{#										<p>25.06.2021</p>#}
+{#									</div>#}
+{#									<div class="location">#}
+{#										<span class="place_icon icons"></span>#}
+{#										<p>Plac Litewski</p>#}
+{#									</div>#}
+{#									<div class="price">#}
+{#										<span class="price_icon icons"></span>#}
+{#										<p>od 100 PLN</p>#}
+{#									</div>	#}
+{#								</div>#}
+{#							</div>	#}
+{#							<img class="foto_width_332" src="assets/images/te12.jpg" alt="BB">#}
+{#						</a>#}
+{#					</div>#}
+{##}
+{#					<div class="Lsmal">#}
+{#						<a class="gimg spaceU spaceL" href="#">#}
+{#							<div class="event_info">	#}
+{#								<div class="event_name">	#}
+{#									<p class="name">Name</p>#}
+{#								</div>		#}
+{#								<div class="event_main">#}
+{#									<div class="date">#}
+{#										<span class="date_icon icons"></span>#}
+{#										<p>25.06.2021</p>#}
+{#									</div>#}
+{#									<div class="location">#}
+{#										<span class="place_icon icons"></span>#}
+{#										<p>Plac Litewski</p>#}
+{#									</div>#}
+{#									<div class="price">#}
+{#										<span class="price_icon icons"></span>#}
+{#										<p>od 100 PLN</p>#}
+{#									</div>	#}
+{#								</div>#}
+{#							</div>	#}
+{#							<img class="foto_width_332 foto_height_397" src="assets/images/te9.jpg" alt="BB">#}
+{#						</a>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+		</div>
+{##}
+		<div class="teach">
+			<div class="container con_1500">
+				<div class="trio">
+					<div class="after_gallery">
+						<div class="some_foto">
+
+						</div>
+						<div class="some_name">
+							<p><span class="some_select">men’s</span><br>lookbook</p>
+						</div>
+						<div class="some_description">
+							<p>Lorem ipsum dolor sit amet eras facilisis consectetur adipiscing elit lor, integer lorem consecteur dignissim laciniqui.Elementum metus facilisis ut phasellu.
+							</p>
+						</div>
+						<div class="some_bot">
+							<a class="bot_view_now" href="#">view now</a>
+						</div>
+					</div>
+					<div class="after_gallery">
+						<div class="some_foto">
+
+						</div>
+						<div class="some_name">
+							<p><span class="some_select">women’s</span><br>lookbook</p>
+						</div>
+						<div class="some_description">
+							<p>Pellentesque habitant morbi tristique senectus et netus et malesuada ames . Pellentesque laoreet quis enim et mattis. Quisque interdum felis ellus.
+							</p>
+						</div>
+						<div class="some_bot">
+							<a class="bot_view_now" href="#">view now</a>
+						</div>
+					</div>
+					<div class="after_gallery">
+						<div class="some_foto">
+
+						</div>
+						<div class="some_name">
+							<p><span class="some_select">your</span><br>lookbook</p>
+						</div>
+						<div class="some_description">
+							<p>See an item you like and click the button to add it to your lookbook where you can create your own perfect look. It’s like your own boutique!
+							</p>
+						</div>
+						<div class="some_bot">
+							<a class="bot_view_now" href="#">view now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<footer>
+			<div class="container">
+				<div class="before_footer">
+					<div class="footer_menu">
+						<span class="nav_link">Information</span>
+						<p><a href="#">Infa</a></p>
+						<p><a href="#">Nuzna</a></p>
+						<p><a href="#">Tut</a></p>
+						<p><a href="#">Pustowato</a></p>
+						<p><a href="#">Help</a></p>
+					</div>
+					<div class="footer_menu">
+						<span class="nav_link">Information</span>
+						<p><a href="#">Infa</a></p>
+						<p><a href="#">Nuzna</a></p>
+						<p><a href="#">Tut</a></p>
+						<p><a href="#">Pustowato</a></p>
+						<p><a href="#">Help</a></p>
+					</div>
+					<div class="footer_menu">
+						<span class="nav_link">Information</span>
+						<p><a href="#">Infa</a></p>
+						<p><a href="#">Nuzna</a></p>
+						<p><a href="#">Tut</a></p>
+						<p><a href="#">Pustowato</a></p>
+						<p><a href="#">Help</a></p>
+					</div>
+					<div class="footer_menu">
+						<span class="nav_link">Information</span>
+						<p><a href="#">Infa</a></p>
+						<p><a href="#">Nuzna</a></p>
+						<p><a href="#">Tut</a></p>
+						<p><a href="#">Pustowato</a></p>
+						<p><a href="#">Help</a></p>
+					</div>
+					<div class="footer_menu footer_menu_300">
+						<span class="nav_link">contact details</span>
+						<p>Head Office: Avenue Fashion, 180-182 Regent Street, London.</p>
+						<p>Telephone: 0123-456-789</p>
+						<p>Email: support@yourwebsite.com</p>
+					</div>
+				</div>
+			</div>
+			<div class="foot">
+				<div class="container">
+					<div class="foot">
+						<div><p>2020 Vlark gr. 3.9/17</p></div>
+						<div>
+							<p>Design by Volodymyr & Mark</p>
+							<p>Dev by Volodymyr</p>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</footer>
+
+	</div>
+</body>
+</html>
