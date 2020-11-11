@@ -1,0 +1,20 @@
+{% load static %}
+
+<body>
+    <header class="header">
+		<div class="container">
+			<div class="inner">
+				<div class="logo"><a href="{% url 'home' %}">Vlark</a></div>
+				<nav  class="nav">
+					<a class="nav_link" href="#"><p>Register</p></a>
+					<a class="nav_link" href="#"><p>Sign In</p></a>
+					<a class="nav_link empty" href="#">
+						<img class="car" src="{% static 'shop/images_for_pages/shop_cart.png' %}" alt="S">
+						<p>empty</p>
+						<span class="arrow-bot"></span>
+					</a>
+				</nav>
+			</div>
+		</div>
+	</header>
+</body>
