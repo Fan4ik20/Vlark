@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shop.context_processors.menu_categories',
             ],
         },
     },
@@ -79,8 +80,12 @@ WSGI_APPLICATION = 'vovmark_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vovmark_db',
+        'USER': 'postgres',
+        'PASSWORD': '010179',
+        'HOST': 'localhost',
+        'PORT': '5433'
     }
 }
 

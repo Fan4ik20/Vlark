@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 # Create your models here.
 
@@ -31,6 +31,10 @@ class City(models.Model):
 
 class Category(models.Model):
     category_name = models.CharField(max_length=30, unique=True)
+    slug = models.SlugField(max_length=250, unique=True)
+
+    def get_url(self):
+        return reverse('categories', args=[self.slug])
 
     def __str__(self):
         return self.category_name
@@ -44,12 +48,17 @@ class Category(models.Model):
 class Subcategory(models.Model):
     subcategory_name = models.CharField(max_length=30)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=250)
+
+    def get_url(self):
+        return reverse('events_by_subcategory',
+                       args=[self.category.slug, self.slug])
 
     def __str__(self):
         return self.subcategory_name
 
     class Meta:
-        ordering = ('subcategory_name',)
+        ordering = ('category',)
         verbose_name = 'Subcategory'
         verbose_name_plural = 'Subcategories'
 
@@ -63,6 +72,10 @@ class Event(models.Model):
     event_img = models.ImageField(upload_to="event_img/")
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=250, unique=True)
+
+    def get_url(self):
+        return reverse('event_detail', args=[self.subcategory.slug, self.slug])
 
     def __str__(self):
         return self.event_name

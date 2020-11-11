@@ -5,7 +5,7 @@ from django.shortcuts import render
 from .models import Event
 
 
-def home(request):
+def home(request, category_slug=None):
     events = Event.objects
     return render(request, 'shop/index.html', {"events": events})
 

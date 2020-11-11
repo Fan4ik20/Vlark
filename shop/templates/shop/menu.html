@@ -4,63 +4,20 @@
 			<div class="inner">
 				<div class="logo"></div>
 				<nav  class="nav_menu">
-
+                    {% for category in categories %}
 					<div class="menu_list">
-						<a class="nav_link" href="#"><p>Menu</p>
+						<a class="nav_link" href="#"><p>{{ category.category_name }}</p>
 							<span class="arrow-bot"></span>
 						</a>
 						<div class="for_hov">
 							<ul class="sub_menu_list">
-								<li><a href="#" class="plitka pl_big"></a></li>
-								<li><a href="#" class="plitka pl_dwa"></a></li>
-								<li><a href="#" class="plitka"></a></li>
-								<li><a href="#" class="plitka pl_big"></a></li>
+                                {% for subcategory in category.subcategory_set.all %}
+								<li><a href="#">{{ subcategory.subcategory_name }}</a></li>
+                                {% endfor %}
 							</ul>
 						</div>
 					</div>
-
-					<div class="menu_list">
-						<a class="nav_link" href="#"><p>Films</p>
-						<span class="arrow-bot"></span></a>
-						<div class="for_hov">
-							<ul class="sub_menu_list">
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="menu_list">
-						<a class="nav_link" href="#"><p>Teatr</p>
-						<span class="arrow-bot"></span></a>
-						<div class="for_hov">
-							<ul class="sub_menu_list">
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="menu_list">
-						<a class="nav_link" href="#"><p>Balet</p>
-						<span class="arrow-bot"></span></a>
-						<div class="for_hov fourth">
-							<ul class="sub_menu_list">
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-								<li><a href="#">Fierst</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="menu_list">
-						<a class="nav_link" href="#"><p>IamGay</p></a>
-					</div>
+                    {% endfor %}
 				</nav>
 			</div>
 		</div>
