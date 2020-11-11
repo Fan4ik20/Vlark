@@ -10,6 +10,11 @@ class Region(models.Model):
     def __str__(self):
         return self.region_name
 
+    class Meta:
+        ordering = ('region_name',)
+        verbose_name = 'Region'
+        verbose_name_plural = 'Regions'
+
 
 class City(models.Model):
     city_name = models.CharField(max_length=40)
@@ -18,12 +23,22 @@ class City(models.Model):
     def __str__(self):
         return self.city_name
 
+    class Meta:
+        ordering = ('city_name',)
+        verbose_name = 'City'
+        verbose_name_plural = 'Cities'
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
         return self.category_name
+
+    class Meta:
+        ordering = ('category_name',)
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class Subcategory(models.Model):
@@ -32,6 +47,11 @@ class Subcategory(models.Model):
 
     def __str__(self):
         return self.subcategory_name
+
+    class Meta:
+        ordering = ('subcategory_name',)
+        verbose_name = 'Subcategory'
+        verbose_name_plural = 'Subcategories'
 
 
 class Event(models.Model):
@@ -47,18 +67,21 @@ class Event(models.Model):
     def __str__(self):
         return self.event_name
 
+    class Meta:
+        ordering = ('event_name',)
+
 
 class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
-class User(models.Model):
-    nickname = models.CharField(max_length=20, unique=True)
-    password = models.CharField(max_length=40)
-    email = models.CharField(max_length=40)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=50)
-    birth_date = models.DateField()
+# class User(models.Model):
+#     nickname = models.CharField(max_length=20, unique=True)
+#     password = models.CharField(max_length=40)
+#     email = models.CharField(max_length=40)
+#     first_name = models.CharField(max_length=30)
+#     last_name = models.CharField(max_length=50)
+#     birth_date = models.DateField()
 
 
 class PaymentMethod(models.Model):
@@ -66,13 +89,14 @@ class PaymentMethod(models.Model):
 
 
 class ShopCart(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE,
-                                primary_key=True)
+    cart_id = models.CharField(max_length=250, blank=True)
+    date_added = models.DateTimeField(auto_now_add=True)
     payment_method = models.ForeignKey(PaymentMethod, on_delete=models.CASCADE)
 
 
-class OrderDetail(models.Model):
-    quantity = models.DecimalField(max_digits=2, decimal_places=0)
-    price = models.FloatField(default=0)
-    shop_cart = models.ForeignKey(ShopCart, on_delete=models.CASCADE)
+class CartItem(models.Model):
+    # Maybe need to move field price from event to ticket???
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    shop_cart = models.ForeignKey(ShopCart, on_delete=models.CASCADE)
+    quantity = models.DecimalField(max_digits=2, decimal_places=0)
+    active = models.BooleanField(default=True)
