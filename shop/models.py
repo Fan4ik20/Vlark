@@ -67,7 +67,7 @@ class Event(models.Model):
     event_name = models.CharField(max_length=30)
     description = models.CharField(max_length=500)
     event_date = models.DateTimeField()
-    event_cost = models.FloatField(default=0)
+    event_cost = models.IntegerField(default=0)
     event_address = models.CharField(max_length=50)
     event_img = models.ImageField(upload_to="event_img/")
     city = models.ForeignKey(City, on_delete=models.CASCADE)

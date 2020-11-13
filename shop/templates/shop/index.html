@@ -27,13 +27,16 @@
 				<a class="nav_link" href="#"><p>special offers</p></a>
 				<a class="nav_link" href="#"><p>coming soon</p></a>
 			</nav>
-			<div class="gallery">
+		</div>
+
+        <div class="container con_1423">
+            <div class="gallery">
                 {% for event in events.all %}
 					<a class="gimg spaceD" href="{{ event.get_url }}" >
-						<div class="event_info">	
-							<div class="event_name">	
+						<div class="event_info">
+							<div class="event_name">
 								<p class="name">{{ event.event_name }}</p>
-							</div>		
+							</div>
 							<div class="event_main">
 								<div class="date">
 									<span class="date_icon icons"></span>
@@ -46,14 +49,17 @@
 								<div class="price">
 									<span class="price_icon icons"></span>
 									<p>{{ event.event_cost }}</p>
-								</div>	
+								</div>
 							</div>
-						</div>	
+						</div>
 						<img class="foto_width_332" height="300" src="{{ event.event_img.url }}" alt="BB">
 					</a>
                 {% endfor %}
             </div>
-		</div>
+        </div>
+        <div class="container con_1400">
+        </div>
+
     {% include 'shop/teach.html' %}
 	</div>
 </body>

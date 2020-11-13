@@ -27,7 +27,12 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 .con_1400{
 	max-width: 1400px;
 	border-top: 2px solid #e8e8e8;
-	border-bottom: 2px solid #e8e8e8;
+	padding: 0;
+
+}
+
+.con_1423 {
+	max-width: 1423px;
 	padding: 0;
 
 }
@@ -314,9 +319,8 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 	width: 100%;
 	line-height: 0;
 	margin-bottom: 40px;
+	margin-left: 12px;
 	overflow:hidden;
-	display: flex;
-	justify-content: space-between;
 }
 
 .L{
@@ -335,6 +339,8 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 
 .gimg{
 	position: relative;
+	float: left;
+	margin-right: 23px;
 }
 
 .foto_width_332{width: 332px;}
