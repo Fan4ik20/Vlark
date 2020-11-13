@@ -34,7 +34,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=250, unique=True)
 
     def get_url(self):
-        return reverse('categories', args=[self.slug])
+        return reverse('event_by_category', args=[self.slug])
 
     def __str__(self):
         return self.category_name
@@ -51,7 +51,7 @@ class Subcategory(models.Model):
     slug = models.SlugField(max_length=250)
 
     def get_url(self):
-        return reverse('events_by_subcategory',
+        return reverse('event_by_subcategory',
                        args=[self.category.slug, self.slug])
 
     def __str__(self):

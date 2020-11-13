@@ -1,13 +1,22 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
-from .models import Event, Ticket
+from .models import Event, Category, Subcategory
 
 
-def home(request, category_slug=None):
-    events = Event.objects
-    return render(request, 'shop/index.html', {"events": events})
+def home(request, category_slug=None, subcategory_slug=None):
+
+    if all((category_slug is not None, subcategory_slug is not None)):
+        events = Event.objects.filter(subcategory__slug=subcategory_slug)
+    elif category_slug is not None:
+        category_page = get_object_or_404(Category, slug=category_slug)
+        events = Event.objects.filter(subcategory__category=category_page)
+    else:
+        events = Event.objects.all()
+
+    return render(request, 'shop/index.html', {'events': events})
 
 
 def event_detail(request, category_slug, subcategory_slug, event_slug):
