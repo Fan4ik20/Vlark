@@ -29,7 +29,7 @@
 			</nav>
 			<div class="gallery">
                 {% for event in events.all %}
-					<a class="gimg spaceD" href="{% url 'ticket_detail' %}" >
+					<a class="gimg spaceD" href="{{ event.get_url }}" >
 						<div class="event_info">	
 							<div class="event_name">	
 								<p class="name">{{ event.event_name }}</p>

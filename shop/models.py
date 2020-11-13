@@ -75,7 +75,8 @@ class Event(models.Model):
     slug = models.SlugField(max_length=250, unique=True)
 
     def get_url(self):
-        return reverse('event_detail', args=[self.subcategory.slug, self.slug])
+        return reverse('event_detail', args=[self.subcategory.category.slug,
+                                             self.subcategory.slug, self.slug])
 
     def __str__(self):
         return self.event_name

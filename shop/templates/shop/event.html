@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+{% block title %}
+Ticket
+{% endblock %}
+
+{% block content %}
+    <div>
+        <img src="{{ event.event_img.url }}">
+    </div>
+    <div>
+    <h1>{{ event.event_name }}</h1>
+    <h5>{{ event.event_cost }}$</h5>
+    <p> {{ event.description }}</p>
+        <p>The event will take place on:</p>
+        <p>{{ event.event_date.day }} at {{ event.event_date.time }}</p>
+        <p>City: {{ event.city }}</p>
+        <p>Address: {{ event.event_address }}</p>
+    <a href="#">Add to cart</a>
+    </div>
+{% endblock %}
