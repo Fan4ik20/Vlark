@@ -27,40 +27,40 @@
 				<a class="nav_link" href="#"><p>special offers</p></a>
 				<a class="nav_link" href="#"><p>coming soon</p></a>
 			</nav>
-		</div>
-
-        <div class="container con_1423">
             <div class="gallery">
-                {% for event in events.all %}
-					<a class="gimg spaceD" href="{{ event.get_url }}" >
-						<div class="event_info">
-							<div class="event_name">
-								<p class="name">{{ event.event_name }}</p>
-							</div>
-							<div class="event_main">
-								<div class="date">
-									<span class="date_icon icons"></span>
-									<p>{{ event.event_date.date }}</p>
-								</div>
-								<div class="location">
-									<span class="place_icon icons"></span>
-									<p>{{ event.event_address }}</p>
-								</div>
-								<div class="price">
-									<span class="price_icon icons"></span>
-									<p>{{ event.event_cost }}</p>
-								</div>
-							</div>
-						</div>
-						<img class="foto_width_332" height="300" src="{{ event.event_img.url }}" alt="BB">
-					</a>
-                {% endfor %}
+                {% if events %}
+                    {% for event in events %}
+                        <a class="gimg" href="{{ event.get_url }}" >
+                            <div class="event_info">
+                                <div class="event_name">
+                                    <p class="name">{{ event.event_name }}</p>
+                                </div>
+                                <div class="event_main">
+                                    <div class="date">
+                                        <span class="date_icon icons"></span>
+                                        <p>{{ event.event_date.date }}</p>
+                                    </div>
+                                    <div class="location">
+                                        <span class="place_icon icons"></span>
+                                        <p>{{ event.event_address }}</p>
+                                    </div>
+                                    <div class="price">
+                                        <span class="price_icon icons"></span>
+                                        <p>{{ event.event_cost }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="{{ event.event_img.url }}" alt="BB">
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    Sorry, we haven't this kind of event yet.
+                {% endif %}
             </div>
-        </div>
-        <div class="container con_1400">
-        </div>
+		</div>
+    </div>
+
 
     {% include 'shop/teach.html' %}
-	</div>
 </body>
 {% endblock %}

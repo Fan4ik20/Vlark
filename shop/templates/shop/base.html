@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'shop/css/base.css' %}">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 	<title>{% block title %}{% endblock %}</title>
 
 </head>
@@ -18,5 +17,8 @@
 {% endblock %}
 {% include 'shop/footer.html' %}
 </div>
+    <script src="{% static 'shop/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'shop/js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'shop/js/script.js' %}"></script>
 </body>
 </html>
