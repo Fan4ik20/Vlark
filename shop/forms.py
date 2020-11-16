@@ -7,7 +7,7 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30)
     last_name = forms.CharField(max_length=50)
     email = forms.CharField(max_length=40, help_text='eg@mail.com')
-    birth_date = forms.DateField()
+    birth_date = forms.DateField(help_text='m/d/y')
 
     class Meta:
         model = User
