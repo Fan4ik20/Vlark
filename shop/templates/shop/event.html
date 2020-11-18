@@ -15,6 +15,10 @@ Ticket
         <p>{{ event.event_date.day }} at {{ event.event_date.time }}</p>
         <p>City: {{ event.city }}</p>
         <p>Address: {{ event.event_address }}</p>
-    <a href="#">Add to cart</a>
+        {% if event.quantity > 0 %}
+            <a href="{% url 'add_cart' event.id %}">Add to cart</a>
+        {% else %}
+            <p>Sold out!:)</p>
+        {% endif %}
     </div>
 {% endblock %}

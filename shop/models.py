@@ -73,6 +73,7 @@ class Event(models.Model):
     event_img = models.ImageField(upload_to="event_img/")
     city = models.ForeignKey(City, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=100)
     slug = models.SlugField(max_length=250, unique=True)
 
     def get_url(self):
@@ -106,12 +107,20 @@ class PaymentMethod(models.Model):
 class ShopCart(models.Model):
     cart_id = models.CharField(max_length=250, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
-    payment_method = models.ForeignKey(PaymentMethod, on_delete=models.CASCADE)
 
 
 class CartItem(models.Model):
     # Maybe need to move field price from event to ticket???
-    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
     shop_cart = models.ForeignKey(ShopCart, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=2, decimal_places=0)
     active = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = 'CartItem'
+
+    def sub_total(self):
+        return self.event.event_cost * self.quantity
+
+    def __str__(self):
+        return self.event
