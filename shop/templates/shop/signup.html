@@ -11,33 +11,68 @@
 {% endblock %}
 
 {% block content %}
-    <div class="con_1400">
-        {% if not form.is_valid %}
-            <div>
-                <br>
-                <h1>Create a new Account</h1>
-                <br>
-                <div>
-                    <p>Please input the following information to create a new account</p>
-                      <form method="post">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <button type="submit">Sign up</button>
-                      </form>
-                </div>
-            </div>
-        {% else %}
-            <div>
-                <br>
-                <h1>Your account has been successfully created</h1>
-                <br>
-                <div>
-                    <p>Your account has been created and ready to use</p>
-                    <br>
-                    <a href="{% url 'home' %}">Continue</a>
-                </div>
-            </div>
-        {% endif %}
+    
+     <div class="backOpera">
+        <h1 class="big_wite_text"><b>WELCOME</b> to vlark</h1>
+        <h3 class="big_wite_text sign_or_reg_text">sign in or register</h3>
     </div>
 
+    <div class="container">
+        <div class="signup_block">
+            {% if not form.is_valid %}
+                <p class="grey_text">Create a new Account</p>
+                <p class="grey_text text_11px">Please input the following information to create a new account</p>
+
+                <form method="post">
+                     <div class="forma clear">
+                        <div id="registerLeft" class="half_big_forma"></div>
+                        <div class="palka"></div>
+                        <div id="registerRight" class="half_big_forma"></div>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    </div>
+                    <button id="button_reg" type="submit" class="some_bot">
+                        <p class="bot_text_white">Sign up</p>
+                    </button>
+                </form>
+            {% else %}
+                <div>
+                    <p class="grey_text">Your account has been successfully created</p>
+                    <div>
+                        <p class="grey_text text_13px">Your account has been created and ready to use</p>
+                        <a class="or_creat_text" href="{% url 'home' %}">Continue</a>
+                    </div>
+                </div>
+            {% endif %}
+        </div>  
+        <script>
+            var en = document.getElementById("div_id_first_name");
+            registerLeft.appendChild(en);
+
+            en = document.getElementById("div_id_last_name");
+            registerLeft.appendChild(en);
+
+            en = document.getElementById("div_id_username");
+            registerLeft.appendChild(en);
+
+            en = document.getElementById("div_id_email");
+            registerLeft.appendChild(en);
+
+            en = document.getElementById("div_id_email");
+            registerLeft.appendChild(en);
+
+             en = document.getElementById("div_id_birth_date");
+            registerLeft.appendChild(en);
+
+            en = document.getElementById("div_id_password1");
+            registerRight.appendChild(en);
+
+            en = document.getElementById("div_id_password2");
+            registerRight.appendChild(en);
+
+            en = document.getElementById("button_reg");
+            registerRight.appendChild(en);
+
+        </script>
+    </div>
 {% endblock %}

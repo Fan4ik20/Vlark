@@ -3,21 +3,21 @@
 <body>
     <header class="header">
 		<div class="container">
-			<div class="inner">
+			<div class="inner space_beetween">
 				<div class="logo"><a href="{% url 'home' %}">Vlark</a></div>
 				<nav  class="nav">
                     {% if not request.user.is_authenticated %}
 					<a class="nav_link" href="{% url 'signup' %}"><p>Register</p></a>
 					<a class="nav_link" href="{% url 'login' %}"><p>Log In</p></a>
                     {% else %}
-                        Welcome, {{ request.user.first_name }}!
-
                         <a class="nav_link" href="{% url 'logout' %}"><p>Log Out</p></a>
                     {% endif %}
 					<a class="nav_link empty" href="{% url 'cart_detail' %}">
 						<img class="car" src="{% static 'shop/images_for_pages/shop_cart.png' %}" alt="S">
                         {% if item_count > 0 %}
-                            {{ item_count }}
+                            <p>{{ item_count }}</p>
+                        {% else %}
+                        	<p>Empty</p>
                         {% endif %}
 						<span class="arrow-bot"></span>
 					</a>

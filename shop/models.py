@@ -56,7 +56,7 @@ class Subcategory(models.Model):
                        args=[self.category.slug, self.slug])
 
     def __str__(self):
-        return self.subcategory_name
+        return self.category.category_name + "|" + self.subcategory_name
 
     class Meta:
         ordering = ('category',)
@@ -89,15 +89,6 @@ class Event(models.Model):
 
 class Ticket(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-
-
-# class User(models.Model):
-#     nickname = models.CharField(max_length=20, unique=True)
-#     password = models.CharField(max_length=40)
-#     email = models.CharField(max_length=40)
-#     first_name = models.CharField(max_length=30)
-#     last_name = models.CharField(max_length=50)
-#     birth_date = models.DateField()
 
 
 class PaymentMethod(models.Model):

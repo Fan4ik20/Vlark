@@ -1,4 +1,4 @@
-{% load static %}
+    {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/css/cart.css' %}">
 	<title>{% block title %}{% endblock %}</title>
     <style type="text/css">
             .material-icons.md-48 { font-size: 48px; }
@@ -22,8 +22,8 @@
 {% include 'shop/menu.html' %}
 {% block content %}
 {% endblock %}
-{% include 'shop/footer.html' %}
 </div>
+{% include 'shop/footer.html' %}
     <script src="{% static 'shop/js/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'shop/js/masonry.pkgd.min.js' %}"></script>
     <script src="{% static 'shop/js/script.js' %}"></script>

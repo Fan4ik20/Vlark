@@ -9,18 +9,29 @@ Log In
 {% endblock %}
 
 {% block content %}
-    <div>
-        <br>
-        <h1>Login User</h1>
-        <br>
-        <h2>Registered Users only</h2>
-        <form method="post">
-            {% csrf_token %}
-            <p>{{ form|crispy }}</p>
-            <button type="submit" class="btn btn-secondary">
-                Log in
-            </button>
-        </form>
-        <br>
+
+    <div class="backOpera">
+        <h1 class="big_wite_text"><b>WELCOME</b> to vlark</h1>
+        <h3 class="big_wite_text sign_or_reg_text">sign in or register</h3>
     </div>
+
+    <div class="container">
+        <div class="login_block">
+            <p class="grey_text">Login User</p>
+            <p class="grey_text text_13px">Registered Users only</p>
+
+            <form method="post">
+                <div class="forma">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="space_beetween">
+                    <button type="submit" class="some_bot btn-secondary">
+                        <p class="bot_text_white">Log in</p>
+                    </button>
+                    <a class="bue_green_text" href="{% url 'signup' %}"><p>or create an account...</p></a>
+                </div>
+            </form>
+        </div>
+    </div>  
 {% endblock %}

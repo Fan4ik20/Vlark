@@ -7,101 +7,85 @@ Cart
 {% endblock %}
 
 {% block content %}
-    {% if not cart_items %}
-        <div>
-            <br>
-            <h1>Your cart is empty</h1>
-            <br>
-            <p>Click <a href="{% url 'home' %}">here</a> to go back to home.</p>
-        </div>
-    {% else %}
-        <div>
-            <br>
-            <div>
-                Shopping cart
+<div class="container">
+    <div class="cart_block">
+        {% if not cart_items %}
+            <div class="cart_empty_block">
+                <p class="grey_text">Your cart is empty</p>
+                <p class="grey_text text_11px">Click <a href="{% url 'home' %}">here</a> to go back to home.</p>
             </div>
-        </div>
-        <div>
-            <div>
-                <table>
-                    <thead>
+        {% else %}
+            <p class="grey_text no_uppercase_text">Shopping cart</p>
+
+                
+                {% for cart_item in cart_items %}
+                    <div class="bilet_buy_block bilet_buy_cart_block space_beetween">
+                        <div class="event_foto_and_text_cart space_beetween">
+                            <a class="event_foto_cart" href="{{ cart_item.event.get_url }}">
+                                <img src="{{ cart_item.event.event_img.url }}">
+                            </a>
+                            <div>
+                                <p>
+                                {{ cart_item.event.event_name }}<br>
+                                Unit price: {{ cart_item.event.event_cost }}<br>
+                                Quantity: {{ cart_item.quantity }} x {{ cart_item.event.event_cost }}
+                                </p>
+                            </div>
+                        </div>
+                        {{ cart_item.sub_total }} zł
+
+                        <div class="add_sub_del_event space_beetween">
+                        {% if cart_item.quantity < cart_item.event.quantity %}
+                            <a href="{% url 'add_cart' cart_item.event.id %}">
+                                <i class="material-icons cart-icon">add_shopping_cart</i>
+                            </a>
+                            <a href="{% url 'cart_remove' cart_item.event.id %}">
+                                <i class="material-icons cart-icon">remove_circle_outline</i>
+                            </a>
+                            <a href="{% url 'cart_remove_product' cart_item.event.id %}">
+                                <i class="material-icons cart-icon">delete</i>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'cart_remove' cart_item.event.id %}"><i class="material-icons cart-icon">remove_circle_outline</i></a>
+                            <a href="{% url 'cart_remove_product' cart_item.event.id %}"><i class="material-icons cart-icon">delete</i></a>
+                        {% endif %}
+                        </div>
+                    </div>                    
+                {% endfor %}
+
+
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+                <table class="table cart-table">
+                    <thead class="cart-thead">
                         <tr>
-                            <th>
-                                Your Items
+                            <th colspan="4">
+                                Check out
                             </th>
                         </tr>
                     </thead>
-                    {% for cart_item in cart_items %}
+                    <tbody>
                         <tr>
-                            <td><a href="{{ cart_item.event.get_url }}">
-                                <img src="{{ cart_item.event.event_img.url }}"
-                                width="100" height="100">
-                            </a>
-                            </td>
                             <td>
-                                {{ cart_item.event.event_name }}
-                                <br>
-                                Unit price: {{ cart_item.event.event_cost }}
-                                <br>
-                                Quantity: {{ cart_item.quantity }} x {{ cart_item.event.event_cost }}
+                                Please check your cart before payment!
                             </td>
-                            <td>
-                                {{ cart_item.sub_total }}
-                            </td>
-                            {% if cart_item.quantity < cart_item.event.quantity %}
-                                <td>
-                                    <a href="{% url 'add_cart' cart_item.event.id %}">
-                                        <i class="material-icons cart-icon">add_shopping_cart</i>
-                                    </a>
-                                <a href="{% url 'cart_remove' cart_item.event.id %}">
-                                    <i class="material-icons cart-icon">remove_circle_outline</i>
-                                </a>
-                                <a href="{% url 'cart_remove_product' cart_item.event.id %}">
-                                    <i class="material-icons cart-icon">delete</i>
-                                </a>
-                                </td>
-                                {% else %}
-                                    <td>
-                                        <a href="{% url 'cart_remove' cart_item.event.id %}"><i class="material-icons cart-icon">remove_circle_outline</i></a>
-                                        <a href="{% url 'cart_remove_product' cart_item.event.id %}"><i class="material-icons cart-icon">delete</i></a>
-                                    </td>
-                            {% endif %}
                         </tr>
-                    {% endfor %}
+                        <tr>
+                            <td class="text-left">
+                                Your total bill is: <strong>{{ total }}$</strong>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
+                <div class="mx-auto">
+                    <a href="{% url 'home' %}" style="text-decoration: None">
+                        <button type="button" class="btn btn-lg btn-block bg-dark text-white">
+                            Back to products
+                        </button>
+                    </a>
+                </div>
             </div>
-        </div>
-
-        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
-            <table class="table cart-table">
-                <thead class="cart-thead">
-                    <tr>
-                        <th colspan="4">
-                            Check out
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            Please check your cart before payment!
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-left">
-                            Your total bill is: <strong>{{ total }}$</strong>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="mx-auto">
-                <a href="{% url 'home' %}" style="text-decoration: None">
-                    <button type="button" class="btn btn-lg btn-block bg-dark text-white">
-                        Back to products
-                    </button>
-                </a>
-            </div>
-        </div>
-    {% endif %}
-
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

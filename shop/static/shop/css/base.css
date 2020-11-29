@@ -1,3 +1,7 @@
+html{
+	height: 100%;
+}
+
 body{
 	margin: 0;
 	font-family: 'Montserrat', sans-serif;
@@ -6,6 +10,7 @@ body{
 	font-size: 13px;
 	line-height: 1.6;
 	color: #272727;
+	height: 100%;
 }
 
 
@@ -15,6 +20,17 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 *:before,
 *:after {
 	box-sizing: border-box;
+}
+
+.space_beetween{
+	display: flex;
+	justify-content: space-between;
+}
+
+.all{
+	box-sizing: border-box;
+	min-height: 100%;
+	padding-bottom: 350px;
 }
 
 /* Container */
@@ -40,7 +56,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 }
 
 
-.header .container, .menu .container{
+.header .container{
 	height: 45px;
 }
 
@@ -51,7 +67,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 	margin-bottom: 50px;
 }
 
-.back{
+.backMain{
 	height: 698px;
 	display: flex;
 	flex-direction: column;
@@ -76,14 +92,12 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 
 .menu{
 	top: 45px;
-	height: 45px;
+	height: 75px;
 	align-items: center;
 }
 
 /* Inners */
 .inner{
-	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	height: 100%;
 }
@@ -113,7 +127,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 }
 
 .nav_menu{
-	margin-top:30px;
+	margin-top:15px;
 	text-transform: uppercase;
 	font-size: 13px;
 	font-weight: 600;
@@ -197,7 +211,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 
 /* arrow for bot */
 .arrow-bot{
-	background-color: #e6e7e7;
+	background-color: #f8f8f800;
 	border-bottom: 1px solid #03d7ab;
 	border-left: 1px solid #03d7ab;
 	bottom: -1px;
@@ -256,8 +270,6 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 	display: inline-block;
 	vertical-align: top;
 	padding: 14px 100px;
-	margin: 555px 0 0 215px;
-
 
 	font-size: 16px;
 	color: #454647;
@@ -269,7 +281,16 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 	transition: transform .2s linear;
 }
 
+.btn_festival{
+	margin: 555px 0 0 215px;
+}
+
 .btn p{margin: 0;}
+
+#button_reg{
+	float:right;
+	margin-top: 15px;
+}
 
 .btn:hover{
 	transform: scale(1.08);
@@ -414,11 +435,6 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 	background-color: rgb(238 238 238);
 }
 
-.trio{
-	display: flex;
-	justify-content: space-between;
-}
-
 .after_gallery{
 	width: 475px;
 	height: 375px;
@@ -462,24 +478,32 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 .some_bot{
 	width: 160px;
 	height: 50px;
-	float: right;
 	font-size: 15px;
 	font-weight: 500;
 	line-height: 50px;
 	text-transform: uppercase;
 	text-align: center;
 
-	border: 2px solid #737373;
+	text-decoration: none;
 
-	margin: 29px 40px 0 0;
+	border: 2px solid #737373;
 
 	transition: background 0.2s linear;
 }
 
 .bot_view_now{
+	margin: 29px 40px 0 0;
+	float: right;
+}
+
+.bot_text_white{
 	text-decoration: none;
 	color: #454647;
 	transition: color .2s linear;
+}
+
+p.bot_text_white{
+	margin: 0;
 }
 
 .some_bot:hover {
@@ -487,7 +511,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 	border: 2px solid #00c8c8;
 }
 
-.some_bot:hover .bot_view_now{
+.some_bot:hover .bot_text_white{
 	color: #fff;
 }
 
@@ -496,6 +520,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;}
 footer{
 	background-color: rgb(238, 238, 238);
 	overflow:hidden;
+	margin-top: -300px;
 }
 
 .before_footer{
@@ -535,8 +560,6 @@ footer{
 	color:#999999;
 	height: 45px;
 	width: 100%;
-	display: flex;
-	justify-content: space-between;
 }
 
 .foot p{
@@ -548,4 +571,244 @@ footer{
 	background-color: pink;
 	height: 500px;
 	width: 500px;
+}
+
+/* +===+===+===+===+===+===+===+===+===+===+===+===+ */
+
+.palka{
+	height: 350px;
+	border-left: 2px solid #a4a4a4;
+	float: left;
+}
+
+.backOpera{
+	margin-top: 120px;
+	height: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	background: url("../images_for_pages/opera_background.png") top no-repeat;
+	background-size: cover;
+}
+
+/* Login and signup*/
+
+.login_block{
+	width:  430px;
+	margin: 60px auto;
+}
+
+.signup_block{
+	width:  900px;
+	margin: 60px auto;
+}
+
+.big_wite_text{
+	color: #fff;
+	font-size: 35px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.sign_or_reg_text{
+	font-size: 20px;
+}
+
+.bue_green_text{
+	color: #00c8c8;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.grey_text{
+	color: #575153;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 600;
+	margin: 0;
+}
+
+.text_13px{
+	font-size: 13px;
+}
+
+.text_11px{
+	font-size: 11px;
+}
+
+/* forms */
+
+.clear,
+.clear:after,
+.clear:before{
+ content:"";
+ display:table;
+ clear:both;
+}
+
+.forma{
+	margin-top: 15px;
+}
+
+.forma input{
+	width: 430px;
+	height: 35px;
+	border: 2px solid #a4a4a4;
+}
+
+.forma input:focus {
+	border: 2px solid #737373;
+  	outline: none;
+}
+
+button{
+	outline: none;
+}
+
+#id_first_name, #id_last_name{
+	width: 210px;
+}
+
+#div_id_first_name{
+	margin-right: 10px;
+}
+
+#div_id_first_name, #div_id_last_name{
+	float: left;
+}
+
+#div_id_password1{
+	margin-bottom: 0px;
+}
+
+#div_id_password1 ul{
+	margin: 5px 0 10px;
+}
+
+.half_big_forma{
+	width: 430px;
+	float: left;
+}
+
+#registerLeft{
+	margin-right: 19px;
+}
+
+#registerRight{
+	margin-left: 19px;
+	width: 428px;
+}
+
+.help-block{
+	margin: 5px 0;
+}
+
+.control-group{
+	margin-bottom: 20px;
+}
+
+/* ========================EVENT==================*/
+
+.event_block{
+	margin-top: 50px;
+}
+
+.left_part_event{
+	width: 332px;
+}
+
+.right_part_event{
+	width: 632px;
+}
+
+.event_all_text{
+	color: #575153;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.icon_ticket_big_in_event {
+    background-image: url(https://ebilet-static.azureedge.net/Images/place/placeIconsv3.png?ipignore=true&v=14);
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: -125px 0;
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-right: 10px;
+}
+
+.icon_and_name_event{
+	height: 25px;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.icon_and_name_event p{
+	line-height: 25px;
+	width: 500px;
+}
+
+.bilet_buy_block{
+	padding: 25px;
+	background-color: #fff;
+	border: 2px solid #a4a4a4;
+	height: 120px;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	align-items: center;
+}
+
+.go_left{
+	float: left;
+}
+
+.plac_and_time_event_info{
+	padding: 30px 0 0 10px;
+}
+
+.no_uppercase_text{
+	text-transform: none;
+}
+
+
+/* Cart ================================================ */
+
+.cart_block{
+	margin-top: 120px;
+}
+
+.cart_empty_block{
+	width: 250px;
+	margin: 0 auto;
+	padding-top:150px;
+}
+
+table{
+	width: 100%;
+}
+
+.bilet_buy_cart_block{
+	box-shadow: 0 0 5px  rgba(0,0,0,0.2);
+	margin-bottom: 20px;
+	padding: 0 10px;
+}
+
+.event_foto_and_text_cart{
+	width: 310px;
+}
+
+.event_foto_cart{
+	line-height: 0;
+
+}
+
+.event_foto_cart img{
+	width: 177px;
+	height: 100px;
+	object-fit: cover;
+}
+
+.add_sub_del_event{
+	width: 80px;
 }

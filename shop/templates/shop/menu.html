@@ -1,7 +1,9 @@
+{% load static %}
+
 <body>
     <div class="menu">
 		<div class="container">
-			<div class="inner">
+			<div class="inner space_beetween">
 				<div class="logo"></div>
 				<nav  class="nav_menu">
                     {% for category in categories %}
@@ -22,4 +24,33 @@
 			</div>
 		</div>
 	</div>
+	<script src="{% static 'shop/js/jquery-3.5.1.min.js' %}"></script>
+	<script>
+		var s_win_w = window.innerWidth;
+
+		function resize(){
+			var forH = document.getElementsByClassName('for_hov');
+			var i;
+			var otsup = 0;
+			var otsupInPx = "";
+
+			for(i = 0; i < forH.length; i++){
+				otsup = ((window.innerWidth - 1000)/2) + 120 * (forH.length - i) - 510;
+				if(otsup <= 0){
+					otsup = 50;
+				}
+				otsupInPx = otsup.toString() + "px";
+				forH[i].style.right = otsupInPx;
+			}
+		}
+		
+		$(window).resize(function(){		  	
+	    	resize();
+
+		});
+
+		(function(){
+    		resize();
+		})();
+	</script>
 </body>

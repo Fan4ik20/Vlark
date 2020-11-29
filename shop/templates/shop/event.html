@@ -4,21 +4,51 @@ Ticket
 {% endblock %}
 
 {% block content %}
-    <div>
-        <img src="{{ event.event_img.url }}">
+    <div class="backOpera ">
+            <h1 class="big_wite_text"><b>Event</b> view</h1>
+            <h3 class="big_wite_text sign_or_reg_text">{{ event.subcategory.category }} - {{ event.subcategory }} - {{ event.city }} - <span class="bue_green_text">{{ event.event_name }}</span></h3>
     </div>
-    <div>
-    <h1>{{ event.event_name }}</h1>
-    <h5>{{ event.event_cost }}$</h5>
-    <p> {{ event.description }}</p>
-        <p>The event will take place on:</p>
-        <p>{{ event.event_date.day }} at {{ event.event_date.time }}</p>
-        <p>City: {{ event.city }}</p>
-        <p>Address: {{ event.event_address }}</p>
-        {% if event.quantity > 0 %}
-            <a href="{% url 'add_cart' event.id %}">Add to cart</a>
-        {% else %}
-            <p>Sold out!:)</p>
-        {% endif %}
-    </div>
+    <div class="container">
+       
+        <div class="event_block space_beetween">
+            <div class="left_part_event">
+                <img src="{{ event.event_img.url }}">
+            </div>
+            <div class="right_part_event">
+                <p  class="grey_text">{{ event.event_name }} - {{ event.city }}</p>
+                <p class="event_all_text">The event will take place on: 
+                    <br> Address: {{ event.event_address }} 
+                    <br> {{ event.event_date.date }} at {{ event.event_date.time }}<br>
+                    <br>{{ event.description }}</p>
+
+                 <div class="bilet_block">
+                    <div class="icon_and_name_event">
+                        <i class="icon_ticket_big_in_event"></i>
+                        <p class="grey_text no_uppercase_text">{{ event.event_name }} - {{ event.city }}</p>
+                    </div>
+                    <div class="bilet_buy_block space_beetween">
+                        <div class="place_date_event_billet_buy">
+                            <div class="go_left">
+                                <p class="grey_text no_uppercase_text">{{ event.city }}</p>
+                                <p class="grey_text no_uppercase_text">{{ event.event_date.date }}</p>
+                            </div>
+                            <div class="go_left plac_and_time_event_info">
+                                <p class="grey_text text_13px no_uppercase_text">{{ event.event_date.time }}</p>
+                                <p class="grey_text text_13px no_uppercase_text">{{ event.event_address }}</p>
+                            </div>
+                        </div>
+
+
+                    {% if event.quantity > 0 %}
+                            <a class="some_bot" href="{% url 'add_cart' event.id %}">
+                                 <p class="bot_text_white"> Add to cart</p>
+                            </a>
+                        {% else %}
+                            <p class="bue_green_text">Sold out! :)</p>
+                        {% endif %}    
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>  
 {% endblock %}

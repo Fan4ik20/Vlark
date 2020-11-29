@@ -36,7 +36,6 @@ def event_detail(request, category_slug, subcategory_slug, event_slug):
 
 
 def signUp(request):
-    print(request.method)
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -47,7 +46,6 @@ def signUp(request):
             user_group.user_set.add(signup_user)
     else:
         form = SignUpForm()
-        print(form.is_valid())
 
     return render(request, 'shop/signup.html', {'form': form})
 
